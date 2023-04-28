@@ -15,7 +15,7 @@ url <- paste0("https://geodata-eu-central-1-kontur-public.s3.amazonaws.com/kontu
 zipped.file <- download.file(url = url, destfile=filez, method = "auto") 
 R.utils::gunzip(filez, remove = TRUE) 
 
-data <- st_read("kontur_population_SE_20220630.gpkg")
+data <- st_read(substr(filez, 1, nchar(filez)-3))
 
 rivers <- ne_download(scale = 10, type = 'rivers_lake_centerlines', 
                       category = 'physical', returnclass = "sf")
@@ -90,7 +90,7 @@ outfile <- 'anger_plot.png'
   }
   
   render_highquality(
-    preview = FALSE, 
+    preview = FALSE, # TRUE to test
     filename = outfile,
     interactive = FALSE, 
     lightdirection = rev(c(220, 220, 230, 230)),
@@ -109,5 +109,9 @@ outfile <- 'anger_plot.png'
 
 # 2023-04-28 08:25:58.817023 
 # 2.3486176194085 
+#
+# Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz 1.99 GHz
+# 16,0 GB (15,8 GB usable)
+# Windows 10 Pro
 #
 # anger_plot.png size 63.9 MB

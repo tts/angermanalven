@@ -9,8 +9,11 @@ library(colorspace)
 
 # After https://github.com/Pecners/rayshader_portraits/tree/main/R/portraits/seine
 
-# https://data.humdata.org/dataset/kontur-population-sweden
 # Sweden: Population Density for 400m H3 Hexagons
+filez <- "kontur_population_SE_20220630.gpkg.gz"
+url <- paste0("https://geodata-eu-central-1-kontur-public.s3.amazonaws.com/kontur_datasets/", filez)
+zipped.file <- download.file(url = url, destfile=filez, method = "auto") 
+R.utils::gunzip(filez, remove = TRUE) 
 
 data <- st_read("kontur_population_SE_20220630.gpkg")
 

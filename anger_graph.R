@@ -1,6 +1,7 @@
 library(dplyr)
 library(magick)
 library(glue)
+library(ggplot2)
 library(colorspace) 
 library(MetBrewer) 
 
@@ -34,7 +35,7 @@ img %>%
                  location = "-1640+1150", font = "Trebuchet",
                  color = alpha(text_color, .85),
                  size = 120) %>% 
-  image_annotate(text = glue("Tuija Sonkkila (@tts) after the River Seine tutorial by Spencer Schien (@MrPecners) | ",
+  image_annotate(text = glue("Tuija Sonkkila (@tts) after the River Seine code by Spencer Schien (@MrPecners) | ",
                              "Kontur Population Data 400m H3 hexagons (June 30, 2022)"),
                  gravity = "south",
                  location = "+0+100", font = "Trebuchet",
